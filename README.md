@@ -12,7 +12,7 @@ So you've created a React component but would love to give end users the ability
 
 ## Install
 
-`npm install react-to-print --save-dev `
+`npm install ds-react-to-print --save-dev `
 
 ## Demo
 
