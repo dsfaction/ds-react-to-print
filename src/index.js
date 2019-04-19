@@ -10,6 +10,7 @@ class ReactToPrint extends React.Component {
     trigger: PropTypes.func.isRequired,
     /** Content to be printed */
     content: PropTypes.func.isRequired,
+    contentId: PropTypes.string.isRequired,
     /** Callback function to trigger before print */
     onBeforePrint: PropTypes.func,
     /** Callback function to trigger after print */
@@ -56,14 +57,14 @@ class ReactToPrint extends React.Component {
     const {
       bodyClass,
       content,
+      contentId,
       copyStyles,
       pageStyle,
     } = this.props;
 
-    const contentEl = content();
-
+    const contentEl = contentId ? document.getElementById(contentId) : content();
     if (contentEl === undefined) {
-      console.error("Refs are not available for stateless components. For 'react-to-print' to work only Class based components can be printed"); // eslint-disable-line no-console
+      console.error(contentId, document.getElementById(contentId), "Refs are not available for stateless components. For 'ds-react-to-print' to work only Class based components can be printed"); // eslint-disable-line no-console
       return;
     }
 
@@ -165,7 +166,7 @@ class ReactToPrint extends React.Component {
               newHeadEl.onerror = markLoaded.bind(null, newHeadEl, false);
               domDoc.head.appendChild(newHeadEl);
             } else {
-              console.warn("'react-to-print' encountered a <link> tag with an empty 'href' attribute. In addition to being invalid HTML, this can cause problems in many browsers, and so the <link> was not loaded. The <link> is:", node); // eslint-disable-line no-console
+              console.warn("'ds-react-to-print' encountered a <link> tag with an empty 'href' attribute. In addition to being invalid HTML, this can cause problems in many browsers, and so the <link> was not loaded. The <link> is:", node); // eslint-disable-line no-console
               markLoaded(node, true); // `true` because we've already shown a warning for this
             }
           }

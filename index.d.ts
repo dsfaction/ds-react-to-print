@@ -14,6 +14,7 @@ declare class ReactToPrint extends React.Component<ReactToPrint.ReactToPrintProp
     trigger: PropTypes.Validator<ReactToPrint.TriggerFn>;
     /** Content to be printed */
     content: PropTypes.Validator<ReactToPrint.ContentFn>;
+    contentId: PropTypes.Validator<string>;
     /** Callback function to trigger before print */
     onBeforePrint: PropTypes.Requireable<ReactToPrint.PrintCallbackFn>;
     /** Callback function to trigger after print */
@@ -47,6 +48,7 @@ declare namespace ReactToPrint {
     trigger: TriggerFn;
     /** Content to be printed */
     content: ContentFn;
+    contentId: string;
     /** Callback function to trigger before print */
     onBeforePrint?: PrintCallbackFn;
     /** Callback function to trigger after print */
